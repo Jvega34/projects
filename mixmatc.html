@@ -8,67 +8,92 @@
   <title>Componentes de CJA - Mix & Match</title>
   <style>
   body {
-  background-color: #fafafa;
-  font-family: 'Inter', Arial, sans-serif;
-  color: #333;
-}
+    background: url('Background PC y Teams - 3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
 
-h1 {
-  color: #003e6b; /* azul profundo */
-}
+  header {
+    text-align: center;
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.85);
+  }
 
-.container {
-  gap: 20px;
-}
+  header img {
+    max-width: 200px;
+  }
 
-.column {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+  h1 {
+    color: #003e6b;
+    text-align: center;
+    margin-top: 10px;
+  }
 
-.item, .dropzone {
-  background: #f0f4f8;
-  border-radius: 6px;
-  padding: 12px;
-  transition: background-color 0.2s, transform 0.2s;
-}
+  .container {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 
-.item:hover {
-  background: #e6eef8;
-  transform: translateY(-2px);
-}
+  .column {
+    background: #ffffffcc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 45%;
+  }
 
-.dropzone {
-  background: #ffffff;
-  border: 2px dashed #aad4f5;
-}
+  .item, .dropzone {
+    background: #f0f4f8;
+    border-radius: 6px;
+    padding: 12px;
+    transition: background-color 0.2s, transform 0.2s;
+    margin: 10px 0;
+  }
 
-.dropzone.matched {
-  background: #e0f7fa;  /* turquesa claro */
-  border-color: #00aaff;
-}
+  .item:hover {
+    background: #e6eef8;
+    transform: translateY(-2px);
+  }
 
-.dropzone.dragover {
-  background: #e8f4fc;
-}
+  .dropzone {
+    background: #ffffff;
+    border: 2px dashed #aad4f5;
+  }
 
-button {
-  background: #00aaff;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-button:hover {
-  background: #008ecc;
-}
+  .dropzone.matched {
+    background: #e0f7fa;
+    border-color: #00aaff;
+  }
+
+  .dropzone.dragover {
+    background: #e8f4fc;
+  }
+
+  button {
+    background: #00aaff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: #008ecc;
+  }
   </style>
 </head>
 <body>
+  <header>
+    <img src="Logos Omni.pro-08.png" alt="Logo Omni.pro">
+  </header>
   <h1>Componentes de CJA - Mix & Match</h1>
   <div class="container">
     <div class="column">
@@ -84,7 +109,6 @@ button:hover {
       <div class="dropzone" data-match="item1">Métrica</div>
       <div class="dropzone" data-match="item2">Segmento</div>
       <div class="dropzone" data-match="item3">Dimensión</div>
-
     </div>
   </div>
 
