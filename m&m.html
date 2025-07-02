@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Componentes de CJA - Mix & Match</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .column {
+      width: 45%;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .column h2 {
+      text-align: center;
+    }
+    .item, .dropzone {
+      padding: 10px;
+      margin: 10px 0;
+      background: #e0e0e0;
+      border-radius: 5px;
+      cursor: grab;
+    }
+    .dropzone {
+      background: #fff3cd;
+      border: 2px dashed #ffc107;
+      min-height: 40px;
+    }
+    .matched {
+      background-color: #c8e6c9;
+      border: 2px solid #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Componentes de CJA - Mix & Match</h1>
+  <div class="container">
+    <div class="column">
+      <h2>Descripciones</h2>
+      <div class="item" draggable="true" id="item1">Cantidad total de ingresos generados</div>
+      <div class="item" draggable="true" id="item2">Usuarios que compraron desde una campaña específica</div>
+      <div class="item" draggable="true" id="item3">Categoría del producto visitado</div>
+      <div class="item" draggable="true" id="item4">Últimos 7 días con comparación al período anterior</div>
+    </div>
+    <div class="column">
+      <h2>Tipo de Componente</h2>
+      <div class="dropzone" data-match="item1">Métrica</div>
+      <div class="dropzone" data-match="item2">Segmento</div>
+      <div class="dropzone" data-match="item3">Dimensión</div>
+      <div class="dropzone" data-match="item4">Date Range</div>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.item');
+    const dropzones = document.querySelectorAll('.dropzone');
+
+    items.forEach(item => {
+      item.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', item.id);
+      });
+    });
+
+    dropzones.forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.style.backgroundColor = '#fff8e1';
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.style.backgroundColor = '#fff3cd';
+      });
+
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        const draggedId = e.dataTransfer.getData('text/plain');
+        const draggedItem = document.getElementById(draggedId);
+
+        if (zone.dataset.match === draggedId) {
+          zone.appendChild(draggedItem);
+          zone.classList.add('matched');
+          draggedItem.setAttribute('draggable', 'false');
+        } else {
+          alert('Incorrecto. Intenta nuevamente.');
+        }
+        zone.style.backgroundColor = '#fff3cd';
+      });
+    });
+  </script>
+</body>
+</html>
